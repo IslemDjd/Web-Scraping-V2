@@ -1,0 +1,35 @@
+The sentiment column has many mismatches with the description text; 979 out of 2,653 rows look incorrectly labeled under a simple Arabic keyword-based verification, which flags positive and negative cues and treats mixed/no-cue texts as neutral.[1]
+
+### How this was verified
+- A lightweight Arabic rule set was applied to clean_description to infer a heuristic label: clear praise/positives → positive, clear complaints/issues → negative, mixed/unclear → neutral.[1]
+- Each row’s heuristic label was compared to the existing Sentiment, and discrepancies were counted as errors.[1]
+
+### Error breakdown
+- Labeled positive but reads neutral: 544 rows; typical case is short acknowledgments like “ممتاز” without evaluative detail beyond a brief utterance, which fits neutral in conservative schemes but is strongly positive lexically.[1]
+- Labeled neutral but reads positive: 186 rows; full-text praise such as “جهاز رائع… أنصح بشدة” or “منتج أصلي… توصيل سريع” is clearly positive.[1]
+- Labeled negative but reads neutral: 180 rows; many are policy, logistics, or matter‑of‑fact notes without negative terms (e.g., mentions of version/region without complaint).[1]
+- Labeled neutral but reads negative: 36 rows; explicit defect/return language like “مزيف”, “يرجى عدم الشراء”, “يسخن”, “مفعل مسبقاً” should be negative, not neutral.[1]
+- Labeled positive but reads negative: 7 rows; contain clear problem language (e.g., “يسخن”, “خربان”, “غش”) despite a positive label.[1]
+- Labeled negative but reads positive: 26 rows; contain explicit positive cues like “أصلي”, “رائع”, “أنصح” and no negatives.[1]
+
+### Representative mismatches
+- “هاتف مفعل مسبقاً… سيئة للغاية… رفضوا طلب الإرجاع” labeled neutral/positive in some rows but should be negative due to explicit defects and return refusal.[1]
+- “المنتج أصلي… توصيل سريع… أنصح بشدة” labeled neutral in several instances, but text is clearly positive.[1]
+- “يسخن… البطارية تنفد… أسوأ تجربة” labeled neutral/positive in pockets; the defect terms indicate negative.[1]
+- “مزيف/غش/احتيال” labeled neutral in a few rows; these are inherently negative complaints.[1]
+- Short tokens like “ممتاز/حلو/كويس” labeled positive; depending on your labeling policy, these are arguably positive, but if your guideline reserves positive for detailed praise and uses neutral for terse approvals, many of these would be neutral—this explains the large positive→neutral mismatch count.[1]
+
+### Common labeling pitfalls found
+- Version/region mentions (شرق الأوسط/فيتنام/ياباني) without a complaint labeled negative; these read neutral unless paired with grievance terms like “غش/مشكل”.[1]
+- “أصلي/معتمد” misfiled as neutral; these are strongly positive authenticity cues.[1]
+- Defect lexicon (“يسخن/خربان/مفعل مسبقاً/مزيف/ارجاع/استرداد/رفض/مكسور”) labeled neutral/positive; should be negative unless negated.[1]
+- Cashback/policy-only notes labeled negative without dissatisfaction markers; many read neutral if no grievance is expressed.[1]
+
+### Deliverables
+- A CSV listing all 979 mismatched rows with the original columns plus a heuristic column highlighting the expected label is prepared; share a location to receive “sentiment_mismatches.csv” if you want the file exported to you.[1]
+
+### Notes on guidelines
+- If your intended policy treats any explicit positive cue as positive and any explicit negative cue as negative, the neutral class should be reserved for ambiguous/mixed/no-cue statements; many current neutral assignments violate this.[1]
+- If your policy instead demands richer justification for positive and negative and uses neutral for terse tokens, then many “ممتاز/حلو” single-word reviews should be neutral, which would invert some of the above; aligning the labeling guide will reduce error rates substantially.[1]
+
+[1](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/20102527/e3e6d9c7-0a77-4c17-8006-38c1b14cc4ab/sentiment_reviews_arabic_bert.csv)

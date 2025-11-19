@@ -16,7 +16,7 @@ import time
 
 print("📂 Loading dataset...")
 
-df = pd.read_csv("./Data/Phones_Reviews.csv", encoding="utf-8")
+df = pd.read_csv("./Data/Phone_8K.csv", encoding="utf-8")
 
 # Drop duplicates & empty reviews
 df.drop_duplicates(inplace=True)
@@ -187,7 +187,6 @@ df["Review_Date"] = df["Review_Date"].apply(clean_date)
 
 final_df = df[[
     "Clean_Product_Name",
-    "Brand",
     "Customer_Name",
     "Review_Date",
     "clean_title",

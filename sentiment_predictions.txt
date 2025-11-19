@@ -1,0 +1,30 @@
+Text: الهاتف ممتاز جدا وخدمة التوصيل رائعة
+Predicted sentiment: positive (confidence: 0.96)
+
+Text: الخدمة كانت بطيئة ولم أكن راضيًا عن التجربة
+Predicted sentiment: neutral (confidence: 0.51)
+
+Text: المنتج جيد لكنه يحتاج إلى تحسين في التغليف
+Predicted sentiment: neutral (confidence: 0.57)
+
+Text: التطبيق يعاني من الكثير من الأخطاء ويجب تحديثه
+Predicted sentiment: neutral (confidence: 0.51)
+
+Text: المطعم هادئ والطعام لذيذ ولكن السعر مرتفع قليلاً
+Predicted sentiment: neutral (confidence: 0.79)
+
+Text: التجربة كانت أكثر من رائعة، أنصح به بشدة
+Predicted sentiment: positive (confidence: 0.88)
+
+Text: الجهاز توقف عن العمل بعد أسبوع فقط
+Predicted sentiment: negative (confidence: 0.67)
+
+Text: التوصيل كان سريعًا، ولكن المنتج لم يكن كما توقعت
+Predicted sentiment: negative (confidence: 0.69)
+
+Text: خدمة العملاء ممتازة ويسرني التعامل معهم
+Predicted sentiment: neutral (confidence: 0.72)
+
+Text: لم يستحق السعر المدفوع، تجربة سيئة
+Predicted sentiment: negative (confidence: 0.90)
+
